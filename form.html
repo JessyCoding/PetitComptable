@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="Formulaire.js"></script>
+
+<body>
+    <Form method="Post" action="return.php">
+        <p>
+            <h1 class="titre">Formulaire bancaire</h1>
+        </p>
+        <input class="casseText" type="text" name="name" placeholder="Nom du copmte">
+        <br>
+        <br>
+
+        <input type="text" name="provision" placeholder="ex : 10,00">
+        <br>
+        <br> 
+        Type de compte :
+        <select name="type" id="compte">
+            <option value="Courant">Courant</option>
+            <option value="Epargne">Epargne</option>
+            <option value="Compte joint">Compte joint</option>
+        </select>
+        <br>
+        <br> 
+        Devise du compte :
+        <select name="devise" id="Devise du compte">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+        <br>
+        <br>
+
+        <input type="submit" name="myForm" value="ok">
+    </Form>
+</body>
