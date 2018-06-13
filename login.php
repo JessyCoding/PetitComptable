@@ -1,48 +1,55 @@
 <?php
- session_start();
- echo $_SESSION['id'];
-function dbConnect() {
-    $host = "localhost";
-    $dbName = "petitcomptable";
-    $user   = "root";
-    $password = "root";
 
-    return new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
-}
+    include_once 'utils.php';
 
-// Récup du login et de son Mdp
+    if (isset($_POST['submitLogin'])){
+        login();
+    }
+    else header("Location: index.php");
 
-$bdd = dbConnect();
+    function login(){
+        $user = get_useraccount();
+        echo $user['pseudo'];
+        echo $user['password'];
+        // comparaison du Mdp envoyé via le formulaire à la base
 
-$req = $bdd->prepare('SELECT id, mdp FROM Users WHERE pseudo = :pseudo');
-$req->execute(array(
-        'pseudo' => $_POST['pseudo']));
-$resultat = $req->fetch();
+        $isMdpCorrect = ($_POST['mdp'] == $user['password']) ? true : false;
 
-
-// comparaison du Mdp envoyé via le formulaire à la base
-
-$isMdpCorrect = ($_POST['mdp'] == $resultat['mdp']) ? true : false;
-
-if(!$resultat)
-{
-    echo 'Mauvais identifiant ou mot de passe , le grand Thanos arrive! veuillez attendre';
- 
-}
-else
-{
-    if ($isMdpCorrect){
+        if(empty($user))
+        {
+            echo '<script>alert("Mauvais identifiant ou mot de passe , le grand Thanos arrive! veuillez attendre");</script>';
+            header("Location: index.php");
         
-        $_SESSION['id']=$resultat['id'];
-        $_SESSION['pseudo'] = $_POST['pseudo'];
-        echo 'Vous avez réussi à vous connecté au compte '.$resultat['id'].' et donc Thanos est perdu au fin fond du webspace';
+        }
+        else
+        {
+            if ($isMdpCorrect){
+                
+                $_SESSION['id']=$user['id'];
+                $_SESSION['pseudo'] = $_POST['pseudo'];
+
+                header("Location: form_bankaccounts.php");
+            }
+            else{
+                echo '<script>alert("Tu c pa ton mo de pace, t nul");</script>';
+                header("Location: index.php");
+            }
+        }
     }
-    else{
-        echo 'Tu c pa ton mo de pace , t nul';
-    
+
+    function get_useraccount(){
+        // Récup du login et de son Mdp
+        $db = db_connect();
+
+        echo empty($db) ? "true" : "false";
+        
+        $req = $db->prepare('SELECT * FROM users WHERE pseudo = ?');
+        $req->execute(array($_POST['pseudo']));
+        $resultat = $req->fetch();
+
+        echo empty($resultat) ? "true" : "false";
+
+        return $resultat;
     }
-    
 
-}
-
-
+?>
