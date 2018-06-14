@@ -8,6 +8,12 @@
     if (isset($_POST['submitCreateBA'])){
         create_bankaccount();
     }
+    else if (isset($_POST['submitGoBA'])){
+        header("Location: form_movements.php?id=".$_POST['idBA']);
+    }
+    else if (isset($_POST['submitEditBA'])){
+        edit_bankaccount();
+    }
     else if (isset($_POST['submitDeleteBA'])){
         delete_bankaccount();
     }
@@ -21,9 +27,9 @@
         } 
 
         $nameAccount = $_POST['name']; 
-        $compte = $_POST['type'];
-        $provision = $_POST['provision']; 
-        $monaie = $_POST['devise'];
+        $type = $_POST['type'];
+        $amount = $_POST['amount']; 
+        $devise = $_POST['devise'];
         $userId = $_SESSION['id'];
         
         $db = db_connect();
@@ -33,24 +39,47 @@
         $req->execute(array(
                 "userId"    => $userId, 
                 "name"      => htmlspecialchars($nameAccount), 
-                "type"      => $compte, 
-                "amount"    => $provision, 
-                "devise"    => $monaie));
+                "type"      => $type, 
+                "amount"    => $amount, 
+                "devise"    => $devise));
                 
         $req->closeCursor();
 
         header("Location: form_movements.php?id=".$db->lastInsertId());
     }
 
+    function edit_bankaccount(){
+        $idBA = $_POST["idBA"];
+        $nameAccount = $_POST['name']; 
+        $type = $_POST['type'];
+        $amount = $_POST['amount']; 
+        $devise = $_POST['devise'];
+        
+        $db = db_connect();
+        //insert
+    
+        $req = $db->prepare("UPDATE bankAccounts SET `name` = :nameAcc, type = :type, amount = :amount, devise = :devise WHERE id = :id");
+        $req->execute(array(
+                "id"        => $idBA, 
+                "nameAcc"   => htmlspecialchars($nameAccount), 
+                "type"      => $type, 
+                "amount"    => $amount, 
+                "devise"    => $devise));
+                
+        $req->closeCursor();
+
+        header("Location: form_bankaccounts.php");
+    }
+
     function delete_bankaccount(){
         $db = db_connect();
-        $account = $_POST['account'];
+        $id = $_POST['idBA'];
         //delete 
         
-        delete_movements($db, $account);
+        delete_movements($db, $id);
 
         $reqDelBA= $db->prepare("DELETE FROM bankAccounts  WHERE id = ?");
-        $reqDelBA->execute(array($account));
+        $reqDelBA->execute(array($id));
         $reqDelBA->closeCursor();
 
         header("Location: form_bankaccounts.php");

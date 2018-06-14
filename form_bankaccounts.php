@@ -8,59 +8,42 @@
         <link rel="stylesheet" href="style.css" />
        
     </head>
-    <body>
-        
-        <?php
-            $bankaccounts = get_userbankaccounts();
-            if(!empty($bankaccounts)){
-                echo '<p><h1 class="titre">Selection d\'un compte bancaire</h1></p>';
-                display_listbankaccounts();
-            }
-        ?>
-
-        <form method="Post" action="bankaccounts.php">
-            <p>
-                <h1 class="titre">Création d'un compte bancaire</h1>
-            </p>
-            <input class="casseText" type="text" name="name" placeholder="Nom du copmte">
-            <br>
-            <br>
-
-            <input type="number" name="provision" placeholder="ex : 10">
-            <br>
-            <br> 
-            Type de compte :
-            <select name="type" id="compte">
-                <option value="Courant">Courant</option>
-                <option value="Epargne">Epargne</option>
-                <option value="Compte joint">Compte joint</option>
-            </select>
-            <br>
-            <br> 
-            Devise du compte :
-            <select name="devise" id="Devise du compte">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-            </select>
-            <br>
-            <br>
-
-            <input type="submit" name="submitCreateBA" value="ok">
-        </form>
-        
-        <?php
-            $bankaccounts = get_userbankaccounts();
-            if(!empty($bankaccounts)){
-                echo '<p><h1 class="titre">Suppression d\'un compte bancaire</h1></p>';
-                echo '<form method="POST" action="bankaccounts.php">';
-                echo '<select name="account">';
-        
+    <body><h1 class="titre">Bonjour <span><?php echo $_SESSION["pseudo"]; ?></span> !</h1>
+        <h3>Voici la liste de vos comptes !</h1>
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Devise</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <?php
                 display_bankaccounts();
-                    
-                echo "</select>";
-                echo '<input type="submit" name="submitDeleteBA" value="Supprimer">';
-                echo "</form>";
-            }
-        ?>
+            ?>
+            <form method="POST" action="bankaccounts.php">
+                <tr>
+                    <th></th>
+                    <th><input class="casseText" type="text" name="name" placeholder="Nom du copmte"></th>
+                    <th><select name="type">
+                        <?php
+                            display_types();
+                        ?>
+                    </select></th>
+                    <th><input type="number" name="amount" placeholder="ex : 10"></th>
+                    <th><select name="devise" id="Devise du compte">
+                        <?php
+                            display_devises();
+                        ?>
+                    </select></th>
+                    <th><input type="submit" name="submitCreateBA" value="Valider"/></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </form>
+        </table>
     </body>
 </html>
