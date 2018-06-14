@@ -4,12 +4,19 @@
 <!DOCTYPE   html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>PC - Petit con...</title>
+    <link rel="icon" href="logo.png">
        
     </head>
-    <body><h1 class="titre">Bonjour <span><?php echo $_SESSION["pseudo"]; ?></span> !</h1>
-        <h3>Voici la liste de vos comptes !</h1>
+    <body>
+    <header> 
+            <div id="header"><p class="textNamePres">Bonjour <span><?php echo $_SESSION["pseudo"]; ?></span> !</p></div>
+    </header>
+    <section id="infoSection">
+    <div class="logo"><img src="logo.png"/></div>
+        <p>Voici la liste de vos comptes:</p>
         <table>
             <tr>
                 <th></th>
@@ -45,5 +52,6 @@
                 </tr>
             </form>
         </table>
+</section>
     </body>
 </html>
