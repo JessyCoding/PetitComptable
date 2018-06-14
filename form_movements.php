@@ -10,58 +10,72 @@
 <!DOCTYPE   html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>PC - Petit con...</title>
+    <link rel="icon" href="logo.png">
        
     </head>
     <body>
-        <p>
-            <?php
-                $ba = get_bankaccount();
-                echo '<h1>'.$ba['name'].' :</h1>';
-                echo '<div>Type :    '.$ba['type'].'</div>';
-                echo '<div>Devise :  '.$ba['devise'].'</div>';
-                echo '<div>Solde :   '.$ba['amount'].'</div>';
-            ?>
-        </p>
-        <table>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th></th>
-                <th>Category</th>
-                <th></th>
-                <th>Amount</th>
-                <th>Method</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <form method="POST" action="movements.php">
-                <tr>
-                    <th></th>
-                    <th><input type="text" name="name" placeHolder="Nom de la transaction" maxlength="35"/></br></th>
-                    <th></th>
-                    <th><select name="category">
-                        <?php
-                            display_categories();
-                        ?>
-                    </select></th>
-                    <th></th>
-                    <th><input type="number" name="amount" placeHolder="Montant"/></br></th>
-                
-                    <th><select name="paymentMethod">
-                        <?php
-                            display_paymentMethods();
-                        ?>
-                    </select></th>
-                    <th><input type="submit" name="submitCreateM" value="Valider"/></th>
-                </tr>
-            </form>
-            <?php
-                display_movements();
-            ?>
-        </table>
-    
+    <header> 
+            <div id="header"><p class="textNamePres">
+                <?php
+                    $ba = get_bankaccount();
+                    echo '<span>'.$ba['name'].'</span>';
+                ?>
+            </p></div>
+    </header>
+    <section id="infoSection" class="flexTag">
+        <div class="form">
+            <div class="flexTag">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th><span class="spanWhiteShadow">Name</span></th>
+                        <th></th>
+                        <th><span class="spanWhiteShadow">Category</span></th>
+                        <th></th>
+                        <th><span class="spanWhiteShadow">Amount</span></th>
+                        <th><span class="spanWhiteShadow">Method</span></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <form method="POST" action="movements.php">
+                        <tr>
+                            <th></th>
+                            <th><input type="text" name="name" placeHolder="Nom de la transaction" maxlength="35"/></br></th>
+                            <th></th>
+                            <th><select name="category">
+                                <?php
+                                    display_categories();
+                                ?>
+                            </select></th>
+                            <th></th>
+                            <th><input type="number" name="amount" placeHolder="Montant"/></br></th>
+                        
+                            <th><select name="paymentMethod">
+                                <?php
+                                    display_paymentMethods();
+                                ?>
+                            </select></th>
+                            <th><input type="submit" name="submitCreateM" value="Valider"/></th>
+                        </tr>
+                    </form>
+                    <?php
+                        display_movements();
+                    ?>
+                </table>
+            </div>
+        </div>
+        <div class="logo"><img src="logo.png"/><p><span class="spanWhiteShadow">Voici la liste des opérations de ce compte</span></p><div class="form formDark"><p>
+                <?php
+                    $ba = get_bankaccount();
+                    echo '<div class="flexTag center"><div class="prop">Type : </div><div class="prop right">'.$ba['type'].'</div></div>';
+                    echo '<div class="flexTag center"><div class="prop">Devise : </div><div class="prop right">'.$ba['devise'].'</div></div>';
+                    echo '<div class="flexTag center"><div class="prop">Solde : </div><div class="prop right">'.$ba['amount'].'</div></div>';
+                ?>
+            <div></p></div>
+    </section>
         <a href="form_bankaccounts.php">Gestion des comptes</a>
     </body>
 </html>

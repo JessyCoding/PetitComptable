@@ -1,16 +1,19 @@
 <?php
     session_start();
 
-    define("PAYMENT_METHODS", ["Carte Bleue", "Cheque", "Virement", "Prelevement"]);
-    define("ACCOUNT_TYPES", ["Courant", "Epargne", "Compte joint"]);
-    define("DEVISES", ["USD", "EUR"]);
+    // define("PAYMENT_METHODS", ["Carte Bleue", "Cheque", "Virement", "Prelevement"]);
+    // define("ACCOUNT_TYPES", ["Courant", "Epargne", "Compte joint"]);
+    // define("DEVISES", ["USD", "EUR"]); 
+    $PAYMENT_METHODS = ["Carte Bleue", "Cheque", "Virement", "Prelevement"];
+    $ACCOUNT_TYPES = ["Courant", "Epargne", "Compte joint"];
+    $DEVISES = ["USD", "EUR"];
 
     function db_connect(){
         try{
             $host = "localhost";
             $dbname = "petitcomptable";
             $user = "root";
-            $password = "root";
+            $password = "";
     
             $db = new PDO(
                 "mysql:host=$host;dbname=$dbname",
@@ -151,19 +154,22 @@
     }
 
     function display_paymentMethods($pm = "Carte Bleue"){
-        foreach(PAYMENT_METHODS as $paymentMethod){
+        global $PAYMENT_METHODS;
+        foreach($PAYMENT_METHODS as $paymentMethod){
             echo "<option value='".$paymentMethod.($paymentMethod == $pm ? "' selected='selected" : "")."'>".$paymentMethod."</option>";
         }
     }
 
     function display_types($batype = "Courant"){
-        foreach(ACCOUNT_TYPES as $type){
+        global $ACCOUNT_TYPES;
+        foreach($ACCOUNT_TYPES as $type){
             echo "<option value='".$type.($type == $batype ? "' selected='selected" : "")."'>".$type."</option>";
         }
     }
 
     function display_devises($badevise = "EUR"){
-        foreach(DEVISES as $devise){
+        global $DEVISES;
+        foreach($DEVISES as $devise){
             echo "<option value='".$devise.($devise == $badevise ? "' selected='selected" : "")."'>".$devise."</option>";
         }
     }

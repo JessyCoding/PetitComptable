@@ -14,16 +14,16 @@
     <header> 
             <div id="header"><p class="textNamePres">Bonjour <span><?php echo $_SESSION["pseudo"]; ?></span> !</p></div>
     </header>
-    <section id="infoSection">
-    <div class="logo"><img src="logo.png"/></div>
-        <p>Voici la liste de vos comptes:</p>
-        <table>
+    <section id="infoSection" class="flexTag">
+    
+        
+        <div class="form flexTag center"><table id="myTable">
             <tr>
                 <th></th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Devise</th>
+                <th><span class="spanWhiteShadow">Name</span></th>
+                <th><span class="spanWhiteShadow">Type</span></th>
+                <th><span class="spanWhiteShadow">Amount</span></th>
+                <th><span class="spanWhiteShadow">Devise</span></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -51,7 +51,8 @@
                     <th></th>
                 </tr>
             </form>
-        </table>
+        </table></div>
+        <div class="logo"><img src="logo.png"/><p><span class="spanWhiteShadow">Voici la liste de vos comptes</span></p></div>
 </section>
     </body>
 </html>

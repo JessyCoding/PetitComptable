@@ -24,62 +24,25 @@
 }
 #header p{
 
-    font-size : 25px;
+    font-size : 55px;
     font-family: Comic;
     color:#F2F2F2;
 }
-#header span{
+span{
     color:rgb(33, 159, 191);
-    text-shadow: 0px 0px 5px white, 0px 0px 10px white, 0px 0px 15px white;
+}
+.spanWhiteShadow{
+	text-shadow: 0px 0px 5px white, 0px 0px 10px white, 0px 0px 15px white;
 }
 
-table {
-    margin : auto;
-}
 th{
     font-family: Comic;
 }
 
 .logo {
-    position : relative;
-    margin : 10px;
-}
-
-#navMenu li {
-	display:inline;
-	margin-bottom: 0px 60px;
-}
-
-.linkHeader{
-	color: #BF2121;
-	text-decoration: none;
-    font-family: Impact;
-	font-size: 25px;
-}
-
-
-#homeTitle
-{
-	color:#FEFEFE;
-	font-family: Impact;
-	font-size: 50px;
-}
-#homeTitle::before{
-	content: "\"";
-	font-style: italic;
-}
-#homeTitle::after{
-	content: "\"";
-	font-style: italic;
-}
-
-
-#homePara
-{
-	color:#F2F2F2;
-	font-family: Noto Sans;
-	font-weight: 700;
-	font-size: 25px;
+	position : relative;
+	text-align: center;
+    margin : auto 50px;
 }
 
 #infoSection{
@@ -92,131 +55,59 @@ th{
     left:0;
 	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #CCCCCC;
 	position: absolute;
+	vertical-align: sub;
 }
-
-.presentation {
-	width: 210px;
-	height: 150 px;
-	vertical-align: middle;
-	text-align: center;
+.form{
+	width:50%;
+	height:90%;
+	padding : 10px auto;
 	box-shadow: 8px 8px 12px black;
-	margin: 10px;
+	font-family:Noto Sans;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10%;
 	border-radius: 10px;
-	padding:5px 5px;
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top rgb(191,33,33);
+	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #CCCCCC;
+}
+.formDark{
+	padding-top: 0;
+	text-align: center;
+	margin-left:19%;
+	width : 60%;
+	height:100px;
+	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #999999;
+}
+.flexTag{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.flexTag.center{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.fichePres{
-	margin-left: 2px;
+.prop{
+	margin : 2px 0;
+	color : ivory;
+	min-width: 100px;
+	text-align: left;
 }
+.prop.right{
+	text-align: right;
+}
+
 
 .shadow
 {
 	box-shadow: 0px 5px 10px black;
 }
 
-#coachSection{
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #888888;
-	padding-bottom: 20px;
-}
-
 .textNamePres{
+	margin:0;
 	color:#FEFEFE;
 	font-family:Noto Sans;
 	font-weight: 700;
 	text-shadow: 0px 0px 5px black, 0px 0px 10px black, 0px 0px 15px black;
-	font-size: 16px;
-}
-
-.textPres{
-	color:#F2F2F2;
-	font-family:Noto Sans;
-	font-size: 14px;
-}
-
-.conteneur{
-	display : flex;
-	justify-content: space-around;
-}
-
-.noStyle{
-	text-decoration: none;
-}
-
-/***********************
-	  Page Tarifs
-************************/
-#conteneur2{
-	display : flex;
-	justify-content: space-around;
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #CCCCCC;
-}
-
-#titre-tarif{
-	text-align: center;
-	font-family: Impact;
-	font-size: 200%;
-	line-height: 108%;
-	text-align: center;
-	font-size: 50px;
-
-}
-
- .button:hover {
-	background-color:lightcoral;
- }
- .button {
-	box-shadow:3px 3px 3px grey;
- }
-
-#titre_sous_titre{
-	overflow:hidden;
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #CCCCCC;
-	height: 20%;
-	margin-top: 9vh;
-}
-
- .sous_titre{
-	font-family:Comic Sans MS;
-	text-align: center;
- }
-
-/***********************
-	Page Formulaire
-************************/
-#formPage{
-	padding-top: 50px;
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #888888;
-}
-#formulaire{
-	padding-left: 20px;
-	font-family: Impact;
-	text-shadow: 0px 0px 5px rgb(191,33,33), 0px 0px 10px rgb(191,33,33), 0px 0px 15px rgb(191,33,33), 0px 0px 20px rgb(191,33,33);
-}
-
-.formSection{
-	width: 80%;
-	box-shadow: 8px 8px 12px black;
-	font-family:Noto Sans;
-	text-align: center;
-	margin-bottom: 10px;
-	margin-left: 10%;
-	border-radius: 10px;
-	background:url(https://asset.leetchi.com/Content/Longane/dist/img/pattern/pattern-grid.png) repeat center top #CCCCCC;
-}
-
-.formLegend{
-	color:white;
-	text-shadow: 0px 0px 5px black, 0px 0px 10px black, 0px 0px 15px black, 0px 0px 20px black;
-}
-
-.conteneurMid{
-	display:flex;
-	justify-content: center;
-}
-
-#submitBtn{
-	margin:0px;
-	padding:16px;
-	text-align: center;
 }

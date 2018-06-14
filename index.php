@@ -13,10 +13,10 @@
     </head>
     <body>
         <header> 
-            <div id="header"><p class="textNamePres">PETIT COMPTABLE</p></div>
+            <div id="header"><p class="textNamePres">PETITCOMPTABLE</p></div>
     </header>
     <section id="infoSection">
-        <div class="logo"><img src="logo.png"/></div>
+        <div class="logo"><img src="logo.png"/><p><span class="spanWhiteShadow">Connecte toi et apprends organiser tes dépense</span></div>
         <form method="POST" action="login.php">
             <input type="text" name="pseudo" placeholder="Votre username" /><br>
             <input type="password" name="mdp" placeholder="Votre Mot de passe" /><br>
