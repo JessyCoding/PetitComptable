@@ -30,7 +30,7 @@
                     display_movements();
                 ?>
                 <tr>
-                    <th><input type="text" name="name" placeHolder="Nom de la transaction"/></br></th>
+                    <th><input type="text" name="name" placeHolder="Nom de la transaction" maxlength="35"/></br></th>
                     <th><select name="type">
                     <?php
                         display_categories();

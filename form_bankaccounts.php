@@ -14,7 +14,7 @@
             $bankaccounts = get_userbankaccounts();
             if(!empty($bankaccounts)){
                 echo '<p><h1 class="titre">Selection d\'un compte bancaire</h1></p>';
-                display_bankaccounts();
+                display_listbankaccounts();
             }
         ?>
 
@@ -26,7 +26,7 @@
             <br>
             <br>
 
-            <input type="text" name="provision" placeholder="ex : 10,00">
+            <input type="number" name="provision" placeholder="ex : 10">
             <br>
             <br> 
             Type de compte :
@@ -52,7 +52,7 @@
             $bankaccounts = get_userbankaccounts();
             if(!empty($bankaccounts)){
                 echo '<p><h1 class="titre">Suppression d\'un compte bancaire</h1></p>';
-                echo "<form>";
+                echo '<form method="POST" action="bankaccounts.php">';
                 echo '<select name="account">';
         
                 display_bankaccounts();
@@ -60,7 +60,6 @@
                 echo "</select>";
                 echo '<input type="submit" name="submitDeleteBA" value="Supprimer">';
                 echo "</form>";
-                echo '<a href="form_movements.php">Entrer des operations</a>';
             }
         ?>
     </body>

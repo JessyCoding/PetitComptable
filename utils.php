@@ -80,11 +80,18 @@
         return $data[0];
     }
 
+    function display_listbankaccounts(){
+        $bankaccounts = get_userbankaccounts();
+
+        foreach($bankaccounts as $ba){
+            echo '<div><a href="form_movements.php?id=' . $ba['id'] . '">'.$ba['name'].'</a></div>';
+        }
+    }
     function display_bankaccounts(){
         $bankaccounts = get_userbankaccounts();
 
         foreach($bankaccounts as $ba){
-            echo '<a href="form_movements.php?id=' . $ba['id'] . '">'.$ba['name'].'</a>';
+            echo "<option value=".$ba["id"].">".$ba["name"]."</option>";
         }
     }
 

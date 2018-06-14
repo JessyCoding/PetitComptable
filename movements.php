@@ -25,7 +25,7 @@ function create_movement(){
     $req = $db->prepare("INSERT INTO movements (`idBankAccount`, `name`,`idCategory`, `amount`, `paymentMethod`) VALUES (:account, :nameMovement, :category, :amount, :method)");
     $req->execute(array(
         "account"       =>  $account, 
-        "nameMovement"  =>  $name, 
+        "nameMovement"  =>  htmlspecialchars($name), 
         "category"      =>  $category, 
         "amount"        =>  $amount, 
         "method"        =>  $method));
