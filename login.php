@@ -5,6 +5,12 @@
     if (isset($_POST['submitLogin'])){
         login();
     }
+    else if (isset($_POST['submitGoSignUp'])){
+        header("Location: signup.php");
+    }
+    else if (isset($_POST['submitSignUp'])){
+        create_user();
+    }
     else header("Location: index.php");
 
     function login(){
@@ -17,7 +23,6 @@
 
         if(empty($user))
         {
-            echo '<script>alert("Mauvais identifiant ou mot de passe , le grand Thanos arrive! veuillez attendre");</script>';
             header("Location: index.php");
         
         }
@@ -31,7 +36,6 @@
                 header("Location: form_bankaccounts.php");
             }
             else{
-                echo '<script>alert("Tu c pa ton mo de pace, t nul");</script>';
                 header("Location: index.php");
             }
         }
@@ -47,9 +51,30 @@
         $req->execute(array($_POST['pseudo']));
         $resultat = $req->fetch();
 
-        echo empty($resultat) ? "true" : "false";
-
         return $resultat;
+    }
+
+    function create_user(){
+        $user = get_useraccount();
+        if($user){
+            header("Location: index.php");
+            return;
+        } 
+
+        $pseudo = $_POST['pseudo']; 
+        $password = $_POST['mdp'];
+        
+        $db = db_connect();
+        //insert
+    
+        $req = $db->prepare("INSERT INTO users (pseudo, password) VALUES (:pseudo,:password)");
+        $req->execute(array(
+                "password"    => $password, 
+                "pseudo"      => htmlspecialchars($pseudo)));
+                
+        $req->closeCursor();
+
+        header("Location: index.php");
     }
 
 ?>

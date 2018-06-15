@@ -13,7 +13,7 @@
             $host = "localhost";
             $dbname = "petitcomptable";
             $user = "root";
-            $password = "";
+            $password = "root";
     
             $db = new PDO(
                 "mysql:host=$host;dbname=$dbname",
@@ -101,7 +101,7 @@
             display_types($ba["type"]);
             echo '</select></th>';
 
-            echo '<th><input type="number" name="amount" value="'.$ba['amount'].'"/></th>';
+            echo '<th><input type="number" step="0.01" name="amount" value="'.$ba['amount'].'"/></th>';
 
             echo '<th><select name="devise">';
             display_devises($ba["devise"]);
